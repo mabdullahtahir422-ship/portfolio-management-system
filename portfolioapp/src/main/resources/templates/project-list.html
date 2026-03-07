@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Project List</title>
+</head>
+<body>
+
+<h2>Project List</h2>
+
+<a href="/projects/new">
+    <button>Add New Project</button>
+</a>
+
+<br><br>
+
+<!-- EDIT BY ID -->
+<h3>Edit Project</h3>
+<form action="/projects/edit" method="get">
+    Enter Project ID:
+    <input type="number" name="id" required>
+    <button type="submit">Edit</button>
+</form>
+
+<br>
+
+<!-- DELETE BY ID -->
+<h3>Delete Project</h3>
+<form action="/projects/delete" method="get">
+    Enter Project ID:
+    <input type="number" name="id" required>
+    <button type="submit">Delete</button>
+</form>
+
+<br>
+
+<!-- SEARCH BY ID -->
+<h3>Search Project By ID</h3>
+<form action="/projects/search" method="get">
+    <input type="number" name="id" placeholder="Enter Project ID" required>
+    <button type="submit">Search</button>
+</form>
+
+<br><br>
+
+<a href="/">
+    <button>Go To Main Page</button>
+</a>
+
+<br><br>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Company ID</th>
+        <th>Client ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Budget</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr th:each="project : ${projects}"
+        th:id="'row-' + ${project.id}"
+        th:style="${project.id == searchId} ? 'background-color:yellow' : ''">
+
+        <td th:text="${project.id}"></td>
+        <td th:text="${project.companyId}"></td>
+        <td th:text="${project.clientId}"></td>
+        <td th:text="${project.projectName}"></td>
+        <td th:text="${project.description}"></td>
+        <td th:text="${project.status}"></td>
+        <td th:text="${project.budget}"></td>
+        <td th:text="${project.startDate}"></td>
+        <td th:text="${project.endDate}"></td>
+
+    </tr>
+
+    </tbody>
+</table>
+
+
+<!-- AUTO SCROLL TO SEARCHED ROW -->
+
+<script th:if="${searchId != null}">
+    window.onload = function() {
+
+        var row = document.getElementById("row-" + [[${searchId}]]);
+
+        if(row){
+            row.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        }
+
+    };
+</script>
+
+
+</body>
+</html>

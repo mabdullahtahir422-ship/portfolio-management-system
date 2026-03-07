@@ -1,0 +1,23 @@
+<!-- company-list.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Companies List</title></head>
+<body>
+<h2>Companies</h2>
+<table border="1">
+  <tr>
+    <th>ID</th><th>User ID</th><th>Name</th><th>Owner</th><th>Email</th><th>Phone</th><th>Created At</th>
+  </tr>
+  <tr th:each="company : ${companies}">
+    <td th:text="${company.id}">1</td>
+    <td th:text="${company.userId}">1</td>
+    <td th:text="${company.companyName}">Acme Corp</td>
+    <td th:text="${company.ownerName}">John Doe</td>
+    <td th:text="${company.email}">john@acme.com</td>
+    <td th:text="${company.phone}">555-1234</td>
+    <td th:text="${company.createdAt}">2023-01-01T12:00</td>
+  </tr>
+</table>
+<a th:href="@{/companies/new}">Add New Company</a>
+</body>
+</html>

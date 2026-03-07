@@ -1,0 +1,21 @@
+<!-- client-list.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Clients List</title></head>
+<body>
+<h2>Clients</h2>
+<table border="1">
+  <tr>
+    <th>ID</th><th>Company ID</th><th>Name</th><th>Email</th><th>Phone</th>
+  </tr>
+  <tr th:each="client : ${clients}">
+    <td th:text="${client.id}">1</td>
+    <td th:text="${client.companyId}">1</td>
+    <td th:text="${client.clientName}">Name</td>
+    <td th:text="${client.email}">email@example.com</td>
+    <td th:text="${client.phone}">123456789</td>
+  </tr>
+</table>
+<a th:href="@{/clients/new}">Add New Client</a>
+</body>
+</html>

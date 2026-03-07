@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Project</title>
+</head>
+<body>
+
+<h2>Add / Edit Project</h2>
+
+<form th:action="@{/projects/save}" th:object="${project}" method="post">
+
+    <!-- IMPORTANT: Hidden ID field for UPDATE -->
+    <input type="hidden" th:field="*{id}">
+
+    <!-- Company ID -->
+    <label>Company ID:</label>
+    <input type="number" th:field="*{companyId}" required>
+    <br><br>
+
+    <!-- Client ID -->
+    <label>Client ID:</label>
+    <input type="number" th:field="*{clientId}" required>
+    <br><br>
+
+    <!-- Project Name -->
+    <label>Project Name:</label>
+    <input type="text" th:field="*{projectName}" required>
+    <br><br>
+
+    <!-- Description -->
+    <label>Description:</label>
+    <input type="text" th:field="*{description}">
+    <br><br>
+
+    <!-- Status -->
+    <label>Status:</label>
+    <input type="text" th:field="*{status}">
+    <br><br>
+
+    <!-- Budget -->
+    <label>Budget:</label>
+    <input type="number" step="0.01" th:field="*{budget}">
+    <br><br>
+
+    <!-- Start Date -->
+    <label>Start Date:</label>
+    <input type="date" th:field="*{startDate}">
+    <br><br>
+
+    <!-- End Date -->
+    <label>End Date:</label>
+    <input type="date" th:field="*{endDate}">
+    <br><br>
+
+    <button type="submit">Save Project</button>
+    <br><br>
+
+</form>
+
+<br>
+
+<a href="/projects">Back to Project List</a>
+
+</body>
+</html>

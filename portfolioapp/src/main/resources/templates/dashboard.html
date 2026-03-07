@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Dashboard</title>
+
+  <style>
+
+    body{
+    font-family: Arial;
+    background:#e5e7eb;
+    margin:0;
+    padding:0;
+    text-align:center;
+    }
+
+    /* Header */
+
+    .header{
+    background:#34495e;
+    color:white;
+    padding:30px;
+    font-size:32px;
+    font-weight:bold;
+    }
+
+    /* Cards */
+
+    .cards{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    margin-top:50px;
+    }
+
+    .card{
+    width:300px;
+    height:180px;
+    border-radius:15px;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+    font-weight:bold;
+    }
+
+    .card span{
+    font-size:45px;
+    margin-top:15px;
+    }
+
+    .blue{background:#3b82c4;}
+    .green{background:#33c16d;}
+    .orange{background:#e67e22;}
+
+    /* Buttons */
+
+    .buttons{
+    margin-top:50px;
+    }
+
+    .buttons a{
+    text-decoration:none;
+    margin:5px;
+    }
+
+    .buttons button{
+    padding:12px 20px;
+    border:none;
+    border-radius:6px;
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+    }
+
+    /* Button Colors */
+
+    .projects{background:#3498db;}
+    .clients{background:#9b59b6;}
+    .companies{background:#16a085;}
+    .expenses{background:#e67e22;}
+    .transactions{background:#e74c3c;}
+    .users{background:#2c3e50;}
+
+  </style>
+
+</head>
+
+<body>
+
+<div class="header">
+  Portfolio Management Dashboard
+</div>
+
+<!-- Cards -->
+
+<div class="cards">
+
+  <div class="card blue">
+    Total Projects
+    <span th:text="${totalProjects}">0</span>
+  </div>
+
+  <div class="card green">
+    Active Projects
+    <span th:text="${activeProjects}">0</span>
+  </div>
+
+  <div class="card orange">
+    Completed Projects
+    <span th:text="${completedProjects}">0</span>
+  </div>
+
+</div>
+
+<!-- Buttons -->
+
+<div class="buttons">
+
+  <a href="/projects">
+    <button class="projects">Manage Projects</button>
+  </a>
+
+  -
+
+  <a href="/clients">
+    <button class="clients">Manage Clients</button>
+  </a>
+
+  -
+
+  <a href="/companies">
+    <button class="companies">Manage Companies</button>
+  </a>
+
+  -
+
+  <a href="/expenses">
+    <button class="expenses">Manage Expenses</button>
+  </a>
+
+  -
+
+  <a href="/transactions">
+    <button class="transactions">Manage Transactions</button>
+  </a>
+
+  -
+
+  <a href="/users">
+    <button class="users">Manage Users</button>
+  </a>
+
+</div>
+
+</body>
+</html>
